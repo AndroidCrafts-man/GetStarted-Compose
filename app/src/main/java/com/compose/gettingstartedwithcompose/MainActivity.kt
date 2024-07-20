@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -57,16 +59,20 @@ fun MainUi( ) {
 
 @Composable
 fun header(text:String,modifier1: Modifier) {
+    var isexpanded= remember {
+        mutableStateOf(false)
+    }
+    var extraPadding=if (isexpanded.value) 48.dp else 0.dp
   Box(modifier = modifier1)
   {
       Row {
-          Column(modifier = Modifier.weight(1f)) {
+          Column(modifier = Modifier.weight(1f).padding(extraPadding)) {
               Text(text = text)
               Text(text = "android")
           }
 
-          ElevatedButton(onClick = { /*TODO*/ }) {
-              Text(text = "Show More")
+          ElevatedButton(onClick = { isexpanded.value = !isexpanded.value }) {
+              Text(if (isexpanded.value) "Show less" else "Show more")
 
           }
       }
