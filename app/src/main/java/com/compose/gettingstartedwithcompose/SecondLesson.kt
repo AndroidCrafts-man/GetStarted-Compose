@@ -1,4 +1,4 @@
-package com.compose.gettingstartedwithcompose.ui.theme
+package com.compose.gettingstartedwithcompose
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
